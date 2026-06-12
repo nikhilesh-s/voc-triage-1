@@ -1,16 +1,76 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --color-primary: #1c2833;
+  --color-secondary: #609e99;
+  --color-accent-green: #34c759;
+  --color-accent-gray: #aab3b8;
+  --color-light: #f4f6f6;
+  --color-text-light: #5f6368;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900 antialiased;
+    font-family: 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
 }
 
-body {
-  font-family: 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+@layer components {
+  .gradient-bg {
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.02) 1px,
+      rgba(255, 255, 255, 0.02) 2px
+    ),
+    linear-gradient(180deg, #f4f6f6 0%, #609e99 45%, #1c2833 100%);
+  }
+
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .card-light {
+    @apply bg-white/95 border border-white/30 rounded-xl shadow-lg;
+  }
+
+  .card-light:hover {
+    @apply shadow-2xl transition-all duration-300 -translate-y-1.5;
+  }
+
+  .serif {
+    font-family: 'Georgia', 'Garamond', serif;
+  }
+
+  .evidence-badge {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide;
+  }
+
+  .voc-tag {
+    @apply px-3 py-1.5 bg-[rgb(96,158,153)]/15 text-[#609e99] rounded text-xs font-medium;
+  }
+
+  .button-primary {
+    @apply px-9 py-3.5 bg-[#1c2833] text-[#f4f6f6] border-none rounded-full cursor-pointer text-xs font-bold uppercase tracking-wider transition-all hover:scale-105;
+  }
+
+  .button-secondary {
+    @apply px-9 py-3.5 bg-transparent text-[#1c2833] border-2 border-[#1c2833] rounded-full cursor-pointer text-xs font-bold uppercase tracking-wider transition-all hover:bg-[#1c2833] hover:text-white;
+  }
+
+  .button-success {
+    @apply px-7 py-2.5 bg-[#34c759] text-white border-none rounded-full cursor-pointer text-xs font-bold uppercase tracking-wider transition-all hover:bg-green-600;
+  }
 }
